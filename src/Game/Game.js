@@ -66,7 +66,7 @@ export default class Game extends React.Component {
         // Identity of player derived from parity of turn.
         let player = this.state.turn % 2 + 1;
 
-        let color = player == 0 ? "Red" : "Yellow";
+        let color = player == 1 ? "Red" : "Yellow";
 
         // Place player piece in array.
         newGame[5 - this.state.columnHeights[column]][column] = player;
@@ -149,8 +149,10 @@ export default class Game extends React.Component {
                 turn: nextTurn,
                 gameOver: true
             }, () => {
-                alert(color + " is the winner!")
-                this.resetGame();
+                setTimeout(() => {
+                    alert(color + " is the winner!");
+                    this.resetGame();
+                }, 100)
             })
         } else {
             this.setState({

@@ -5,7 +5,7 @@ export default class Navbar extends React.Component{
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link className={"navbar-brand"} to={"/"}>Connect Four</Link>
+                <Link className={"navbar-brand"} to={"/connect-four"}>Connect Four</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
