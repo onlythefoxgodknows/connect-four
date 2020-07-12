@@ -13,26 +13,26 @@ import About from './About';
 import Contact from './Contact';
 import History from './History';
 import Rules from './Rules';
-import Game from './Game';
+import Game from './Game/Game';
 
 function App() {
   return (
       <Router>
           <Navbar />
           <Switch>
-              <Route path="/">
+              <Route exact path="/">
                   <Game />
               </Route>
-              <Route path="/about">
+              <Route exact path="/about">
                   <About />
               </Route>
-              <Route path="/contact">
+              <Route exact path="/contact">
                   <Contact />
               </Route>
-              <Route path="/history">
+              <Route exact path="/history">
                   <History />
               </Route>
-              <Route path="/rules">
+              <Route exact path="/rules">
                   <Rules />
               </Route>
           </Switch>
