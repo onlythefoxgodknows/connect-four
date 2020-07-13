@@ -25,6 +25,11 @@ export default class Navbar2 extends React.Component {
                         <li className="nav-item active">
                             <Link className="yellow nav-link" to={"/elsewhere"}>Play Elsewhere</Link>
                         </li>
+                        <NavDropdown title="Dropdown For Grade" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
