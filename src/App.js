@@ -9,6 +9,7 @@ import  {
 import './App.css';
 
 import Navbar from './Navbar/Navbar';
+import Navbar2 from './Navbar/Navbar2';
 import About from './About/About';
 import Contact from './Contact/Contact';
 import History from './History/History';
@@ -19,7 +20,7 @@ import Elsewhere from "./Elsewhere/Elsewhere";
 function App() {
   return (
       <Router>
-          <Navbar />
+          <Navbar2 />
           <Switch>
               <Route exact path="/connect-four">
                   <Game />
