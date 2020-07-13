@@ -1,0 +1,15 @@
+.icon {
+    height: 1.2em;
+}
+
+.red {
+    color: rgb(242, 106, 96) !important;
+}
+
+.yellow {
+    color: yellow !important;
+}
+
+.navbar-text {
+    font-size: 1em;
+}

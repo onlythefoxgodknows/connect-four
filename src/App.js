@@ -8,12 +8,13 @@ import  {
 
 import './App.css';
 
-import Navbar from './Navbar';
-import About from './About';
-import Contact from './Contact';
-import History from './History';
-import Rules from './Rules';
+import Navbar from './Navbar/Navbar';
+import About from './About/About';
+import Contact from './Contact/Contact';
+import History from './History/History';
+import Rules from './Rules/Rules';
 import Game from './Game/Game';
+import Elsewhere from "./Elsewhere/Elsewhere";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
               </Route>
               <Route exact path="/rules">
                   <Rules />
+              </Route>
+              <Route exact path="/elsewhere">
+                  <Elsewhere />
               </Route>
           </Switch>
       </Router>

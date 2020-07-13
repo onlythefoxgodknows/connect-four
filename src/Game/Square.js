@@ -8,7 +8,7 @@ export default class Square extends React.Component {
         else if (this.props.value == 1) circle = "RedPiecePlayed";
         else circle = "YellowPiecePlayed";
         return (
-            <span className={"Square"}>
+            <span className={"Square card-5"}>
                 <div className={circle + " Centered"}>
 
                 </div>

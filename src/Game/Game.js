@@ -174,7 +174,7 @@ export default class Game extends React.Component {
         return(
             <div>
                 <div className={"Centered"}>{select}</div>
-                <div className={"Centered"}>
+                <div className={"Centered animate__animated animate__jackInTheBox"}>
                     {board}
                 </div>
             </div>

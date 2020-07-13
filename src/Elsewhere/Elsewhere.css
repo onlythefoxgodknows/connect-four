@@ -1,0 +1,13 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+}
+
+.link-image {
+    width: 15vw;
+}
