@@ -25,6 +25,9 @@ export default class Game extends React.Component {
         this.toggleTurn = this.toggleTurn.bind(this);
         this.playPiece = this.playPiece.bind(this);
         this.resetGame = this.resetGame.bind(this);
+        this.downloadFile = this.downloadFile.bind(this);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onReaderLoad = this.onReaderLoad.bind(this);
     }
 
     toggleTurn() {
@@ -52,6 +55,36 @@ export default class Game extends React.Component {
 
     endGame() {
         this.setState({gameOver: true});
+    }
+
+    downloadFile = async () => {
+        const myData = this.state;
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+        const fileName = "connect4_" + dateTime;
+        const json = JSON.stringify(myData, null, 2);
+        const blob = new Blob([json],{type:'application/json'});
+        const href = await URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    onChangeHandler = event => {
+        let reader = new FileReader();
+        reader.onload = this.onReaderLoad;
+        reader.readAsText(event.target.files[0]);
+    }
+
+    onReaderLoad = event => {
+        let data = JSON.parse(event.target.result);
+        console.log(data);
+        this.setState(data);
     }
 
     playPiece(column) {
@@ -164,6 +197,8 @@ export default class Game extends React.Component {
     }
 
     render() {
+        let piece = this.state.turn % 2 == 0 ? "RedPiece card-5" : "YellowPiece card-5";
+
         let selectArray = [0, 1, 2, 3, 4, 5, 6];
 
         let select = <div>{selectArray.map(value => <PieceSelection key={"select" + value} playPiece={this.playPiece} turn={this.state.turn} value={value}/>)}</div>
@@ -173,10 +208,21 @@ export default class Game extends React.Component {
         )
         return(
             <div>
-                <div className={"Centered"}>{select}</div>
-                <div className={"Centered animate__animated animate__jackInTheBox"}>
+            <div style={{marginLeft: "15vw", float: "left"}}>
+                <div>{select}</div>
+                <div className={"animate__animated animate__jackInTheBox"}>
                     {board}
                 </div>
+            </div>
+            <div className="ButtonContainer" style={{float: "left"}}>
+                <div className={"TurnDisplay card-5 animate__animated animate__bounceInRight"}>
+                    <div style={{marginRight: "1vw"}} className={piece}/>
+                    Player Turn
+                </div>
+                <div onClick={this.downloadFile} className={"card-5 SaveButton animate__animated animate__bounceInRight"}>Save Game</div>
+                <input type={"file"} name={"file"} id="file" onChange={this.onChangeHandler} />
+                <label className={"card-5 SaveButton animate__animated animate__bounceInRight"} for={"file"}>Load Game</label>
+            </div>
             </div>
         )
     }
