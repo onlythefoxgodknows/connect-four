@@ -79,11 +79,11 @@ export default class Game extends React.Component {
         let reader = new FileReader();
         reader.onload = this.onReaderLoad;
         reader.readAsText(event.target.files[0]);
+        event.target.value = null;
     }
 
     onReaderLoad = event => {
         let data = JSON.parse(event.target.result);
-        console.log(data);
         this.setState(data);
     }
 
