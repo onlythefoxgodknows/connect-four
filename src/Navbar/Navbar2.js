@@ -6,8 +6,9 @@ import "./Navbar.css";
 export default class Navbar2 extends React.Component {
     render() {
         return (
-            <Navbar bg="primary" expand="lg">
-                <Link className={"navbar-brand yellow"} to={"/connect-four"}>Connect Four</Link>
+            <Navbar style={{backgroundColor: "#4CAF50"}} expand="lg">
+                <Link className={"navbar-brand yellow"} to={"/connect-four"}>c<span style={{display: "inline-block"}} className={"RedPieceSmall card-5 Centered"} />nnect f<span style={{display: "inline-block"}} className={"YellowPieceSmall card-5 Centered"} />ur
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -17,7 +18,7 @@ export default class Navbar2 extends React.Component {
                             <a target="_blank" className="red nav-link" href="https://www.google.com/search?q=connect%20four">Link to Google Search <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item active">
-                            <Link className="yellow nav-link" to={"/about"}>About the Developer</Link>
+                            <Link className="red nav-link" to={"/about"}>About the Developer</Link>
                         </li>
                         <li className="nav-item active">
                             <a className="red nav-link" href={"mailto:huilin1618@gmail.com"}>Contact Me</a>
@@ -25,10 +26,10 @@ export default class Navbar2 extends React.Component {
                         <li className="nav-item active">
                             <Link className="yellow nav-link" to={"/elsewhere"}>Play Elsewhere</Link>
                         </li>
-                        <NavDropdown title="Dropdown For Grade" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown className="red" title="Other" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Example</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Of</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Dropdown</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

@@ -88,6 +88,14 @@ table {
     border: 5px solid #EC1605;
 }
 
+.RedPieceSmall {
+    height: 1em;
+    width: 1em;
+    background: rgb(242, 106, 96);
+    border-radius: 50%;
+    border: 5px solid #EC1605;
+}
+
 .RedPiecePlayed {
     height: var(--pieceSize);
     width: var(--pieceSize);
@@ -99,6 +107,14 @@ table {
 .YellowPiece {
     height: var(--pieceSize);
     width: var(--pieceSize);
+    background: yellow;
+    border-radius: 50%;
+    border: 5px solid orange;
+}
+
+.YellowPieceSmall {
+    height: 1em;
+    width: 1em;
     background: yellow;
     border-radius: 50%;
     border: 5px solid orange;

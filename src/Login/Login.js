@@ -25,6 +25,8 @@ export default class Login extends React.Component {
             <div id={"form-container"}>
                 <div className="login-page">
                     <div className="form">
+                        <h1 id={"login-title"}>c<span style={{display: "inline-block"}} className={"RedPieceSmall card-5 Centered"} />nnect</h1>
+                        <h1 id={"login-title"}>f<span style={{display: "inline-block"}} className={"YellowPieceSmall card-5 Centered"} />ur</h1>
                         <form className="register-form">
                             <input type="text" placeholder="name"/>
                             <input type="password" placeholder="password"/>
