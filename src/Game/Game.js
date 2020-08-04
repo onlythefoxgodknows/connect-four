@@ -220,7 +220,7 @@ export default class Game extends React.Component {
                     Player Turn
                 </div>
                 <div onClick={this.downloadFile} className={"card-5 SaveButton animate__animated animate__bounceInRight"}>Save Game</div>
-                <input type={"file"} name={"file"} id="file" onChange={this.onChangeHandler} />
+                <input id="invisible" type={"file"} name={"file"} id="file" onChange={this.onChangeHandler} />
                 <label className={"card-5 SaveButton animate__animated animate__bounceInRight"} for={"file"}>Load Game</label>
             </div>
             </div>

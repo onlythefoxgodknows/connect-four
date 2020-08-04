@@ -17,6 +17,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: "Roboto", sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -165,7 +166,7 @@ table {
     cursor: pointer;
 }
 
-input {
+#invisible {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
