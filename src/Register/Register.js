@@ -50,8 +50,6 @@ class Register extends React.Component {
             <div className={"animate__animated animate__jackInTheBox"} id={"form-container"}>
                 <div className="login-page">
                     <div className="form">
-                        <h1>{this.state.username}</h1>
-                        <h1>{this.state.password}</h1>
                         <form className="login-form">
                             <input value={this.state.username} onChange={this.handleUsername} type="text" placeholder="email"/>
                             <input value={this.state.password} onChange={this.handlePassword} type="password" placeholder="password"/>
