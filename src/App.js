@@ -18,6 +18,7 @@ import Rules from './Rules/Rules';
 import Game from './Game/Game';
 import Elsewhere from "./Elsewhere/Elsewhere";
 import Login from './Login/Login';
+import Register from './Register/Register';
 
 
 class App extends React.Component {
@@ -36,25 +37,35 @@ class App extends React.Component {
     authListener() {
         fire.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.setState({ user });
+                console.log(user);
+                this.setState({
+                    user: user
+                });
             } else {
-                this.setState({ user: null});
+                console.log(user);
+                this.setState({
+                    user: null
+                });
             }
         })
     }
 
     render() {
+        let game = <Game user={this.state.user}/>
         return (
             <Router>
-                <Navbar2 />
+                <Navbar2 user={this.state.user}/>
                 <Switch>
-                    <PrivateRoute exact path="/" isAuthenticated={this.state.user} component={Game} />
-                    <PrivateRoute exact path="/connect-four" isAuthenticated={this.state.user} component={Game} />
+                    <PrivateRoute user={this.state.user} exact path="/" isAuthenticated={this.state.user} component={Game} />
+                    <PrivateRoute user={this.state.user} exact path="/connect-four" isAuthenticated={this.state.user} component={Game} />
                     <Route exact path="/about">
                         <About />
                     </Route>
                     <Route exact path="/login">
                         <Login />
+                    </Route>
+                    <Route exact path="/register">
+                        <Register />
                     </Route>
                     <Route exact path="/contact">
                         <Contact />

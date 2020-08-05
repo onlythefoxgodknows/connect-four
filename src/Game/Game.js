@@ -2,6 +2,7 @@ import React from 'react';
 import Square from './Square';
 import './board.css';
 import PieceSelection from "./PieceSelection";
+import fire from '../config/Fire';
 
 let defaultState = {
     game: [
@@ -28,6 +29,7 @@ export default class Game extends React.Component {
         this.downloadFile = this.downloadFile.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onReaderLoad = this.onReaderLoad.bind(this);
+        this.saveToDB = this.saveToDB.bind(this);
     }
 
     toggleTurn() {
@@ -196,6 +198,24 @@ export default class Game extends React.Component {
         }
     }
 
+    saveToDB = e => {
+        e.preventDefault();
+        const data = JSON.stringify(this.state);
+        const db = fire.firestore();
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+        db.settings({
+            timestampsInSnapshots: true
+        });
+        const userRef = db.collection(this.props.user.email).add({
+            time: dateTime,
+            game: data
+        })
+        alert("Game has been saved to database.")
+    }
+
     render() {
         let piece = this.state.turn % 2 == 0 ? "RedPiece card-5" : "YellowPiece card-5";
 
@@ -220,8 +240,10 @@ export default class Game extends React.Component {
                     Player Turn
                 </div>
                 <div onClick={this.downloadFile} className={"card-5 SaveButton animate__animated animate__bounceInRight"}>Save Game</div>
-                <input id="invisible" type={"file"} name={"file"} id="file" onChange={this.onChangeHandler} />
-                <label className={"card-5 SaveButton animate__animated animate__bounceInRight"} for={"file"}>Load Game</label>
+                <input style={{width: "0.1px", height: "0.1px", opacity: 0, overflow: "hidden", position: "absolute", zIndex: -1}} type={"file"} name={"file"} id="file" onChange={this.onChangeHandler} />
+                <label className={"card-5 SaveButton animate__animated animate__bounceInRight"} htmlFor={"file"}>Load Game</label>
+                <div onClick={this.saveToDB} className={"card-5 SaveButton animate__animated animate__bounceInRight"}>Save to DB</div>
+                <div onClick={this.saveToDB} className={"card-5 SaveButton animate__animated animate__bounceInRight"}>Load from DB</div>
             </div>
             </div>
         )
